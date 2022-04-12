@@ -1,0 +1,28 @@
+{
+  "mails": [
+    {
+      "id": 1,
+      "title": "Testowy tytuł",
+      "content": "Treść Wiadomości",
+      "date": "2022-03-28"
+    },
+    {
+      "id": 2,
+      "title": "Testowy tytuł",
+      "content": "Treść Wiadomości",
+      "date": "2022-03-28"
+    },
+    {
+      "id": 3,
+      "title": "Testowy tytuł",
+      "content": "Treść Wiadomości",
+      "date": "2022-03-28"
+    },
+    {
+      "id": 4,
+      "title": "Testowy tytuł",
+      "content": "Treść Wiadomości",
+      "date": "2022-03-28"
+    }
+  ]
+}
