@@ -19,11 +19,9 @@ const Mails = ({ mail: { mails, loading}, getMails}) => {
     return (
         <Fragment>
             <div className='right-align'>
-
                 <a
-                href='#!'
-                //onClick={onSubmit}
-                className="btn orange"
+                href='#add-mail-modal'
+                className="btn orange darken-2 modal-trigger"
                 >
                 Dodaj
                 </a>

@@ -21,8 +21,9 @@ export const addMail = (mail) => async dispatch => {
             }
         });
         const data = await res.json();
+
         dispatch({
-            type: GET_MAILS,
+            type: ADD_MAIL,
             payload: data
         });
 
@@ -33,7 +34,6 @@ export const addMail = (mail) => async dispatch => {
         })
     }
 }
-
 
 export const getMails = () => async dispatch => {
     try {

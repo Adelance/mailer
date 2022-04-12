@@ -3,7 +3,7 @@ import React from "react";
 const SearchBar = () => {
 
     return(
-        <nav style={{marginBottom: "30px"}} className="orange">
+        <nav style={{marginBottom: "30px"}} className="orange darken-2">
             <div className="nav-wrapper">
             <form>
                 <div className="input-field">

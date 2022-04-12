@@ -19,10 +19,10 @@
       "date": "2022-03-28"
     },
     {
-      "id": 4,
-      "title": "Testowy tytuł",
-      "content": "Treść Wiadomości",
-      "date": "2022-03-28"
+      "title": "Testing Date",
+      "content": "Is it working?",
+      "date": "2022-04-12",
+      "id": 4
     }
   ]
 }
