@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import M from 'materialize-css/dist/js/materialize.min.js'
+var sanitizeHtml = require('sanitize-html');
 
 const MailItem = ({ mail, deleteMail, setCurrent }) => {
     const onDelete = () => {
@@ -14,6 +15,8 @@ const MailItem = ({ mail, deleteMail, setCurrent }) => {
     }
 
     const shortContent = (content) => { 
+        content = sanitizeHtml(content, {allowedTags: []})
+        console.log(content)
         if(content.length > 30){
             let shortedContent = (content.substring(0,30))
             return shortedContent.substring(0, shortedContent.lastIndexOf(' ')) + ' ...'

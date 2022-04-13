@@ -31,12 +31,6 @@
       "id": 7
     },
     {
-      "title": "Kaaaa",
-      "content": "<tr> <td>{mail.title}</td> <td>{shortContent(mail.content)}</td>      <td>{mail.date}</td>      <td>          visibility</td> <td> edit </td></tr>",
-      "date": "1998-04-13",
-      "id": 8
-    },
-    {
       "title": "Aasdddddd",
       "content": "dasdasdddddddddddddddddd dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdasdasdasedwddddddddddddddddddd",
       "date": "2022-04-13",
