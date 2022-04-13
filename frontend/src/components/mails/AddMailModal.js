@@ -26,7 +26,8 @@ const AddMailModal = ({ addMail }) => {
   const onSubmit = () => {
     if(title === '' ||content === ''){
       M.toast({ html: 'Podaj tytuł oraz treść'});
-      
+    } else if(title.length <= 3 || title.length >= 250){
+      M.toast({ html: 'Tytuł musi zawierać od 3 do 250 znaków'});
     } else {
 
       const newMail = {

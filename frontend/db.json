@@ -1,18 +1,6 @@
 {
   "mails": [
     {
-      "id": 1,
-      "title": "Testowy tytuł",
-      "content": "Treść Wiadomości",
-      "date": "2022-03-28"
-    },
-    {
-      "id": 2,
-      "title": "Testowy tytuł",
-      "content": "Treść Wiadomości",
-      "date": "2022-03-28"
-    },
-    {
       "id": 3,
       "title": "Testowy tytuł",
       "content": "Treść Wiadomości",
@@ -23,6 +11,48 @@
       "content": "Is it working?",
       "date": "2022-04-12",
       "id": 4
+    },
+    {
+      "title": "Decr",
+      "content": "Numer trzynasty – brytyjska niema komedia krótkometrażowa z 1922 roku. Film miał być debiutem reżyserskim Alfreda Hitchcocka, jednak z przyczyn finansowych nie został on ukończony. Do głównych ról byli zaangażowani Clare Greet oraz Ernest Thesiger. Scenariusz autorstwa Elsie Codd, jak i większość zdjęć, nie zachował się do czasów współczesnych. Fabuła Numeru trzynastego miała przedstawiać historię niezamożnych mieszkańców budynku sfinansowanego przez trust Peabody, założony przez amerykańskiego bankiera i filantropa George’a Peabody’ego w",
+      "date": "2022-04-12",
+      "id": 5
+    },
+    {
+      "title": "Dasdasd",
+      "content": "asdasd",
+      "date": "2022-04-12",
+      "id": 6
+    },
+    {
+      "title": "Aaaaaaaaaa",
+      "content": "Fantastyczne zwierzęta i jak je znaleźć – brytyjsko-amerykański film fantasy z 2016 roku w reżyserii Davida Yatesa. Jest spin-offem i filmem poprzedzającym fabularnie serię o Harrym Potterze. Jednym z producentów była J.K. Rowling, która napisała również scenariusz, zainspirowany swoją książką z 2001 roku o tym samym tytule. W rolach głównych wystąpili: ",
+      "date": "2020-04-13",
+      "id": 7
+    },
+    {
+      "title": "Kaaaa",
+      "content": "<tr> <td>{mail.title}</td> <td>{shortContent(mail.content)}</td>      <td>{mail.date}</td>      <td>          visibility</td> <td> edit </td></tr>",
+      "date": "1998-04-13",
+      "id": 8
+    },
+    {
+      "title": "Aasdddddd",
+      "content": "dasdasdddddddddddddddddd dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdasdasdasedwddddddddddddddddddd",
+      "date": "2022-04-13",
+      "id": 10
+    },
+    {
+      "title": "Oke",
+      "content": "dasdasdsad",
+      "date": "2022-04-13",
+      "id": 11
+    },
+    {
+      "title": "Html",
+      "content": "<div>\n Testing\n</div>",
+      "date": "2022-04-13",
+      "id": 12
     }
   ]
 }

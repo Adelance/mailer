@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import {
     ADD_MAIL,
     DELETE_MAIL,
@@ -21,7 +22,7 @@ export const addMail = (mail) => async dispatch => {
             }
         });
         const data = await res.json();
-
+        
         dispatch({
             type: ADD_MAIL,
             payload: data
@@ -35,16 +36,30 @@ export const addMail = (mail) => async dispatch => {
     }
 }
 
-export const getMails = () => async dispatch => {
+export const getMails = (sortedBy = null, direction = true) => async dispatch => {
     try {
         setLoading();
         const res = await fetch('/mails');
         const data = await res.json();
+        
+        switch(sortedBy){
+            case 'title':
+                data.sort((a,b) => (a.title > b.title) ? 1 : ((b.title > a.title) ? -1 : 0))
+                break;
+
+            case 'date':
+                data.sort((a,b) => {
+                    return new Date(b.date) - new Date(a.date);
+                  });
+                break;
+        }
+        if(direction) data.reverse()
+
         dispatch({
             type: GET_MAILS,
             payload: data
         });
-
+        
     } catch(err) {
         dispatch({
             type: MAILS_ERROR,

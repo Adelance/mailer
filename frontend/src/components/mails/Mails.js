@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import MailItem from './MailItem';
 import Preloader from '../layout/Preloader'
 import { connect } from 'react-redux';
@@ -6,11 +6,18 @@ import PropTypes from 'prop-types';
 import { getMails } from '../../actions/mailActions';
 
 const Mails = ({ mail: { mails, loading}, getMails}) => {
+    const [sortedBy, setSortedBy] = useState(null);
+    const [sortDirection, setSortDirection] = useState(false);
 
     useEffect(() => {
-        getMails();
+        getMails(sortedBy, sortDirection);
         // eslint-disable-next-line
-    }, [])
+    }, [sortedBy, sortDirection])
+
+    const sortMails = (keyword) => {       
+        setSortedBy(keyword);
+        (sortedBy === keyword)? setSortDirection(!sortDirection) : setSortDirection(false);
+    }
 
     if(loading || mails === null) {
         return <Preloader />
@@ -30,9 +37,15 @@ const Mails = ({ mail: { mails, loading}, getMails}) => {
             <table className = "centered">
                 <thead>
                     <tr>
-                        <th>Tytuł</th>
+                        <th><a href='#!' onClick={() => sortMails('title') }>Tytuł {sortedBy === 'title' ? (
+                            !sortDirection ? <span className="material-icons">keyboard_arrow_down</span> : <span className="material-icons">keyboard_arrow_up</span>
+                        ) : (<span>   </span>)}</a></th>
+
                         <th>Treść wiadomości</th>
-                        <th>Data dodania</th>
+
+                        <th><a href='#!' onClick={() => sortMails('date')}>Data dodania{sortedBy === 'date' ? (
+                            !sortDirection ? <span className="material-icons">keyboard_arrow_down</span> : <span className="material-icons small">keyboard_arrow_up</span>
+                        ) : (<span>   </span>)}</a></th>
                         <th></th>
                     </tr>
                 </thead>
