@@ -4,6 +4,7 @@ import Preloader from '../layout/Preloader'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getMails } from '../../actions/mailActions';
+import { nanoid } from 'nanoid';
 
 const Mails = ({ mail: { mails, loading}, getMails}) => {
     const [sortedBy, setSortedBy] = useState(null);
@@ -37,13 +38,13 @@ const Mails = ({ mail: { mails, loading}, getMails}) => {
             <table className = "centered">
                 <thead>
                     <tr>
-                        <th><a href='#!' onClick={() => sortMails('title') }>Tytuł {sortedBy === 'title' ? (
+                        <th><a href='#!' onClick={() => sortMails('title') } className="black-text">Tytuł {sortedBy === 'title' ? (
                             !sortDirection ? <span className="material-icons">keyboard_arrow_down</span> : <span className="material-icons">keyboard_arrow_up</span>
                         ) : (<span>   </span>)}</a></th>
 
                         <th>Treść wiadomości</th>
 
-                        <th><a href='#!' onClick={() => sortMails('date')}>Data dodania{sortedBy === 'date' ? (
+                        <th><a href='#!' onClick={() => sortMails('date')} className="black-text">Data dodania{sortedBy === 'date' ? (
                             !sortDirection ? <span className="material-icons">keyboard_arrow_down</span> : <span className="material-icons small">keyboard_arrow_up</span>
                         ) : (<span>   </span>)}</a></th>
                         <th></th>

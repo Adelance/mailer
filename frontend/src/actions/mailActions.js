@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import {
     ADD_MAIL,
     DELETE_MAIL,
@@ -36,6 +35,32 @@ export const addMail = (mail) => async dispatch => {
     }
 }
 
+export const updateMail = mail => async dispatch => {
+    try {
+        setLoading();
+        console.log(mail)
+        const res  = await fetch(`/mails/${mail.id}`, {
+            method: 'PUT',
+            body: JSON.stringify(mail),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }); 
+
+        const data = await res.json();
+
+        dispatch({
+            type: UPDATE_MAIL,
+            payload: data
+        });
+    } catch(err) {
+        dispatch({
+            type: MAILS_ERROR,
+            payload: err.response.data
+        })
+    }
+};
+
 export const getMails = (sortedBy = null, direction = true) => async dispatch => {
     try {
         setLoading();
@@ -72,7 +97,7 @@ export const deleteMail = (id) => async dispatch => {
     try {
         setLoading();
 
-        const res = await fetch(`/mails/${id}`, {
+        await fetch(`/mails/${id}`, {
             method: 'DELETE'
         });
 
@@ -89,10 +114,35 @@ export const deleteMail = (id) => async dispatch => {
     }
 }
 
-export const setCurrent = log => {
+export const searchMails = (text) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch(`/mails?q=${text}`); 
+        const data = await res.json();
+
+        dispatch({
+            type: SEARCH_MAILS,
+            payload: data
+        });
+    } catch(err) {
+        dispatch({
+            type: MAILS_ERROR,
+            payload: err.response.data
+        })
+    }
+};
+
+export const setCurrent = mail => {
     return{
         type: SET_CURRENT,
-        payload: log
+        payload: mail
+    }
+
+}
+
+export const clearCurrent = () => {
+    return{
+        type: CLEAR_CURRENT,
     }
 
 }

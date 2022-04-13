@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { addMail } from '../../actions/mailActions';
+import { updateMail } from '../../actions/mailActions';
 import { connect } from 'react-redux'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const AddMailModal = ({ addMail }) => {
+const EditMailModal = ({ current, updateMail }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
+  useEffect(() => {
+    if(current){
+      setTitle(current.title);
+      setContent(current.content);
+    }
+  }, [current]);
 
   const getDate = () => {
     var d = new Date(),
@@ -29,24 +35,25 @@ const AddMailModal = ({ addMail }) => {
     } else if(title.length < 3 || title.length >= 250){
       M.toast({ html: 'Tytuł musi zawierać od 3 do 250 znaków'});
     } else {
-
-      const newMail = {
+      const updMail = {
+        id: current.id,
         title, 
         content, 
         date: getDate()
       }
 
-      addMail(newMail);
-      M.toast({ html: `New Mail Added` });
+      updateMail(updMail);
+      M.toast({ html: `E-mail został zaktulizowany` });
+      setTitle('');
+      setContent('');
     }
-    setTitle('');
-    setContent('');
+   
   }
 
   return (
-    <div id='add-mail-modal' className='modal' style={modalStyle}>
+    <div id='edit-mail-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
-        <h4>Nowy E-mail</h4>
+        <h4>Wprowadź zmianę</h4>
         <div className='row'>
           <div className='input-field'>
             <input
@@ -54,8 +61,9 @@ const AddMailModal = ({ addMail }) => {
               name='title'
               value={title}
               onChange={e => setTitle(e.target.value)}
+              
             />
-            <label> Tytuł </label>
+            <label className="active"> Tytuł </label>
           </div>
         </div>        
 
@@ -67,7 +75,7 @@ const AddMailModal = ({ addMail }) => {
               value={content}
               onChange={e => setContent(e.target.value)}
             />
-            <label> Treść </label>
+            <label className="active"> Treść </label>
           </div>
         </div>        
 
@@ -78,7 +86,7 @@ const AddMailModal = ({ addMail }) => {
           onClick={onSubmit}
           className='modal-close waves-effect blue waves-light btn orange darken-2'
         >
-          Dodaj
+          Aktualizuj
         </a>
       </div>
     </div>
@@ -90,8 +98,13 @@ const modalStyle = {
   height: '75%'
 }
 
-AddMailModal.propTypes = {
-  addMail: PropTypes.func.isRequired,
+EditMailModal.propTypes = {
+  current: PropTypes.object,
+  updateMail: PropTypes.func.isRequired
 }
 
-export default connect(null, { addMail })(AddMailModal);
+const mapStateToProps = state => ({
+  current: state.mail.current
+})
+
+export default connect(mapStateToProps, { updateMail })(EditMailModal);

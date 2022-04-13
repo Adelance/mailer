@@ -38,7 +38,7 @@ export default( state = initialState, action ) => {
         case UPDATE_MAIL:
             return{
                 ...state, 
-                mails: state.mails.map(mail => mail.id === action.payload),
+                mails: state.mails.map(mail => mail.id === action.payload.id ? action.payload : mail),
                 loading: false
             };
         case GET_MAILS:
@@ -57,13 +57,14 @@ export default( state = initialState, action ) => {
         case SEARCH_MAILS:
             return{
                 ...state, 
-                logs: action.payload,
+                mails: action.payload,
                 loading: false
             };
         case SET_CURRENT:
             return{
                 ...state, 
-
+                current: action.payload,
+                loading: false
             };
         case CLEAR_CURRENT:
             return{

@@ -2,11 +2,11 @@ import React from 'react';
 import { deleteMail, setCurrent } from '../../actions/mailActions';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-
 import M from 'materialize-css/dist/js/materialize.min.js'
 var sanitizeHtml = require('sanitize-html');
 
 const MailItem = ({ mail, deleteMail, setCurrent }) => {
+
     const onDelete = () => {
         if(window.confirm('Na pewno chcesz usunąć ten E-mail?')) {
             deleteMail(mail.id);
@@ -16,7 +16,6 @@ const MailItem = ({ mail, deleteMail, setCurrent }) => {
 
     const shortContent = (content) => { 
         content = sanitizeHtml(content, {allowedTags: []})
-        console.log(content)
         if(content.length > 30){
             let shortedContent = (content.substring(0,30))
             return shortedContent.substring(0, shortedContent.lastIndexOf(' ')) + ' ...'
@@ -34,10 +33,10 @@ const MailItem = ({ mail, deleteMail, setCurrent }) => {
             <td>{mail.date}</td>
 
             <td className="material-icons">
-                visibility
+                <a href='#view-mail-modal' className="blue-text modal-trigger" onClick={() => setCurrent(mail)}>visibility</a>
             </td>
             <td className="material-icons">
-                edit
+               <a href='#edit-mail-modal' className="black-text modal-trigger" onClick={() => setCurrent(mail)}>edit</a>
             </td>
             <td className="material-icons">
                 <a href='#!' onClick={onDelete} className="red-text">delete</a> 

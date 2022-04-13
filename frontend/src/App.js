@@ -6,6 +6,8 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import store from './store';
 import { Provider } from 'react-redux';
 import AddMailModal from './components/mails/AddMailModal';
+import ViewMailModal from './components/mails/ViewMailModal';
+import EditMailModal from './components/mails/EditMailModal';
 
 const App = () => {
   useEffect(()=>{
@@ -19,6 +21,8 @@ const App = () => {
     <Fragment>
       <SearchBar />
       <div className='container'>
+        <EditMailModal />
+        <ViewMailModal />
         <AddMailModal />
         <Mails />
       </div>
